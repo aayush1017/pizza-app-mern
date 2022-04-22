@@ -2,8 +2,8 @@ import React, { useEffect , useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
-import { addPizza } from "../actions/pizzaAction";
 import Success from "../components/Success";
+import { addPizza } from "../actions/pizzaAction";
 
 function AddPizza() {
   const [name, setname] = useState("");
