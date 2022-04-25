@@ -45,4 +45,38 @@ router.post("/getpizzabyid", async(req, res) => {
    
  });
 
+ router.post("/editpizza", async (req, res) =>{
+   const editedpizza = req.body.editedpizza
+   try {
+     const pizza = await Pizza.findOne({_id : editedpizza._id})
+
+     // eslint-disable-next-line no-unused-expressions
+     pizza.name = editedpizza.name,
+     pizza.description = editedpizza.description,
+     pizza.category = editedpizza.category,
+     pizza.image = editedpizza.image,
+     pizza.prices = [editedpizza.prices]
+
+     await pizza.save()
+
+     res.send('Pizza details updated successfully')
+
+   } catch (error) {
+    return res.status(400).json({ message: error });
+   }
+ })
+
+ router.post('/deletepizza', async(req, res) => {
+    
+    const pizzaid = req.body.pizzaid
+    
+    try {
+      await Pizza.findOneAndDelete({_id: pizzaid})
+      res.send("Pizza deleted successfully")
+    } catch (error) {
+      return res.status(400).json({ message: error });
+    }
+
+ })
+
 module.exports = router;

@@ -1,11 +1,10 @@
 import { combineReducers, createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { getAllPizzasReducer, addPizzaReducer, getPizzaByIdReducer } from "./reducers/pizzaReducers";
+import { getAllPizzasReducer, addPizzaReducer, getPizzaByIdReducer, editPizzaReducer} from "./reducers/pizzaReducers";
 import { cartReducer } from "./reducers/cartReducers";
-import { registerUserReducer } from "./reducers/userReducer";
-import { loginUserReducer } from "./reducers/userReducer";
-import { placeOrderReducer, getUserOrdersReducer } from "./reducers/orderReducer";
+import { registerUserReducer, loginUserReducer } from "./reducers/userReducer";
+import { placeOrderReducer, getUserOrdersReducer, getAllOrdersReducer } from "./reducers/orderReducer";
 
 const finalReducer = combineReducers({
   getAllPizzasReducer: getAllPizzasReducer,
@@ -16,6 +15,8 @@ const finalReducer = combineReducers({
   getUserOrdersReducer: getUserOrdersReducer,
   addPizzaReducer: addPizzaReducer,
   getPizzaByIdReducer: getPizzaByIdReducer,
+  editPizzaReducer:editPizzaReducer,
+  getAllOrdersReducer: getAllOrdersReducer,
 });
 
 const cartItems = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
